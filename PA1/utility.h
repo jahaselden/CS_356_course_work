@@ -6,24 +6,27 @@ using namespace std;
 class Utility
 {
 public:
-    char cipherType;
-    string inputFilePath;
-    string outputFilePath;
-    string key;
-    char operation;
+    char cipherType, operation;
+    string inputFilePath, outputFilePath, keyFilePath;
+    int byteIndex;
 
     string plaintextInput;
+    string plaintextKey;
 
     Utility() = delete;
     Utility(char *argv[]);
-    // Utility(char ciphertype, string inputFile, string outputFilePath, string key, char operation);
     static void VerifyInputArgs(int argc);
     void VerifyCipherType();
-    void RetrieveInputFile();
-    void RetrieveOutputFile();
+    void RetrieveInputFileText();
+    void CreateOutputFile();
     void RetrieveKey();
     void VerifyOpMode();
-    void RetrieveInput();
+    void RetrieveInputArgs();
+
+    //these should be in block class
+    void PadInputText();
+    int checkPadding(int inputByteTotal);
+    void addPadding(int padding);
 };
 
 #endif
