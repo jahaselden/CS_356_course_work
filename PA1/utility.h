@@ -22,11 +22,7 @@ public:
     void RetrieveKey();
     void VerifyOpMode();
     void RetrieveInputArgs();
-
-    //these should be in block class
-    void PadInputText();
-    int checkPadding(int inputByteTotal);
-    void addPadding(int padding);
+    //method for writing to output file
 };
 
 #endif

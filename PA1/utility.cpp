@@ -99,28 +99,3 @@ void Utility::RetrieveInputArgs()
     VerifyOpMode();
 }
 
-// these should be in Block class
-void Utility::PadInputText()
-{
-    int inputByteTotal = plaintextInput.size();
-
-    int padding = checkPadding(inputByteTotal);
-    if (padding != 0)
-    {
-        addPadding(padding);
-    }
-}
-
-int Utility::checkPadding(int inputByteTotal)
-{
-    int remainder = inputByteTotal % 16;
-    return remainder;
-}
-
-void Utility::addPadding(int padding)
-{
-    for (int i = 0; i < padding; i++)
-    {
-        plaintextInput += '0';
-    }
-}
