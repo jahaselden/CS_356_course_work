@@ -35,13 +35,16 @@ using namespace std;
 // for each byte of input substring (starting from left side - 0)
 // XOR input index with correlated key index
 
-int main(int, char *argv[])
+int main(int argc, char *argv[])
 {
-
     // printing input for test
-    cout << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5];
+    // cout << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5];
 
-    // TODO check input = 5 - otherwise throw error
+    Utility::VerifyInputArgs(argc);
 
     // pass command line args to Utility and create new object
+    Utility utility = Utility(argv);
+    // Utility utility = Utility(argv[1], argv[2], argv[3], argv[4], argv[5]);
+
+    utility.RetrieveInput();
 }
