@@ -1,29 +1,26 @@
 #ifndef UTILITY_H_DEFINED
 #define UTILITY_H_DEFINED
 
-using namespace std;
-
 class Utility
 {
 public:
-    char cipherType;
-    string inputFilePath;
-    string outputFilePath;
-    string key;
-    char operation;
+    char cipherType, operation;
+    std::string inputFilePath, outputFilePath, keyFilePath;
+    int byteIndex;
 
-    string plaintextInput;
+    std::string plaintextInput;
+    std::string plaintextKey;
 
-    Utility() = delete;
+    // Utility() = delete;
     Utility(char *argv[]);
-    // Utility(char ciphertype, string inputFile, string outputFilePath, string key, char operation);
     static void VerifyInputArgs(int argc);
     void VerifyCipherType();
-    void RetrieveInputFile();
-    void RetrieveOutputFile();
+    void RetrieveInputFileText();
+    void CreateOutputFile();
     void RetrieveKey();
     void VerifyOpMode();
-    void RetrieveInput();
+    void RetrieveInputArgs();
+    // method for writing to output file
 };
 
 #endif
