@@ -11,7 +11,7 @@ public:
     std::string plaintextInput;
     std::string plaintextKey;
 
-    Utility() = delete;
+    // Utility() = delete;
     Utility(char *argv[]);
     static void VerifyInputArgs(int argc);
     void VerifyCipherType();

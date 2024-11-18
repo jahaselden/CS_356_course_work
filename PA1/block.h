@@ -9,8 +9,8 @@ public:
     std::string paddedInput;
     std::string hexInput;
 
-    Block() = delete;
-    Block(string input, string key);
+    //Block() = delete;
+    Block(std::string input, std::string key);
     // these should be in block class
     void PadInputText();
     int CheckPadding(int inputByteTotal);

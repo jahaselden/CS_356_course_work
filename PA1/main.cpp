@@ -38,7 +38,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     // printing input for test
-    // cout << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5];
+    // cout << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << endl;
 
     Utility::VerifyInputArgs(argc);
 
@@ -46,15 +46,15 @@ int main(int argc, char *argv[])
 
     utility.RetrieveInputArgs();
 
-    //if cipher is B 
-        //if operation is encrypt 
-            //encrypt
-        // else operation is decrypt
-            //decrypt
+    // if cipher is B
+    // if operation is encrypt
+    // encrypt
+    // else operation is decrypt
+    // decrypt
 
-    //if cipher is S
-        //if operation is encrypt 
-            //encrypt
-        // else operation is decrypt
-            //decrypt
+    // if cipher is S
+    // if operation is encrypt
+    // encrypt
+    // else operation is decrypt
+    // decrypt
 }

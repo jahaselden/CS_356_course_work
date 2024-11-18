@@ -40,6 +40,7 @@ void Block::addPadding(int padding)
 void Block::XOR()
 {
 }
+
 void Block::Swap()
 {
 }

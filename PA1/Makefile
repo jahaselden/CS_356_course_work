@@ -4,7 +4,7 @@ $(assignment):
 		g++ $(CXXFLAGS) -o $(assignment) *.cpp
 
 tar:
-		tar -cf $(assignment).tar *.h *.cpp Makefile
+		tar -czf Haselden-Jennifer-PA1.tar.gz *.h *.cpp Makefile
 
 clean:
-		rm -f $(assignment) $(assignment).tar *.o *.gch *.gcov a.out
+		rm -f $(assignment) Haselden-Jennifer-PA1.tar.gz *.o *.gch *.gcov a.out
