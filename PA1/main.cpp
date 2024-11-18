@@ -12,7 +12,7 @@ using namespace std;
 // 4. keyFilePath file path: conrains symmetric keyFilePath in ASCII format
 // 5. mode of operation: E or S / encryption or decryption
 
-// examples of how program will be executed:
+// examples of how program will be executed: (more in test file)
 //  ./cipher B b-e-input.txt b-e-output.txt b-e-keyFilePath.txt E
 //  ./cipher S s-d-input.txt s-d-output.txt s-d-keyFilePath.txt D
 
