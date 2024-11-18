@@ -3,8 +3,6 @@
 #include <fstream>
 #include "utility.h"
 
-using namespace std;
-
 Utility::Utility(char *argv[])
     : cipherType(*argv[1]), inputFilePath(argv[2]), outputFilePath(argv[3]), keyFilePath(argv[4]), operation(*argv[5]), byteIndex(0) {}
 

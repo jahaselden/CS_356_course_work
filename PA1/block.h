@@ -1,17 +1,13 @@
 #ifndef UTILITY_H_DEFINED
 #define UTILITY_H_DEFINED
 
-#include <string>
-
-using namespace std;
-
 class Block
 {
 public:
-    string textInput;
-    string key;
-    string paddedInput;
-    string hexInput;
+    std::string textInput;
+    std::string key;
+    std::string paddedInput;
+    std::string hexInput;
 
     Block() = delete;
     Block(string input, string key);
