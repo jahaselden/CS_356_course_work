@@ -126,15 +126,3 @@ string Utility::GetTextInput(){
 string Utility::GetKey(){
     return this->plaintextKey;
 }
-
-// if cipher is B
-    // if operation is encrypt
-        // encrypt
-    // else operation is decrypt
-        // decrypt
-
-// if cipher is S
-    // if operation is encrypt
-        // encrypt
-    // else operation is decrypt
-        // decrypt
