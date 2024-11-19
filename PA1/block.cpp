@@ -11,14 +11,14 @@ Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 void Block::PadInputText()
 {
     int inputByteTotal = textInput.size();
-    // cout << "text input size before padding: " << textInput.size() << endl;
+    cout << "text input size before padding: " << textInput.size() << endl;
     int padding = CheckPadding(inputByteTotal);
     // cout << "padding remainder: " << padding << endl;
     if (padding != 0)
     {
         AddPadding();
     }
-    // cout << "text input size after padding: " << textInput.size() << endl;
+    cout << "text input size after padding: " << textInput.size() << endl;
 }
 
 bool Block::CheckPadding(int inputByteTotal)
@@ -27,18 +27,13 @@ bool Block::CheckPadding(int inputByteTotal)
     return remainder == 0;
 }
 
-// this might need to be 81
+// this might need to be 0x81
 void Block::AddPadding()
 {
     while (textInput.size() % 16 != 0)
     {
         textInput.push_back(static_cast<char>(0x81));
     }
-    // for (int i = 0; i < padding; i++)
-    // {
-    //     textInput += '0';
-    //     // textInput.push_back(static_cast<char>(0x81));
-    // }
 }
 
 vector<string> Block::Get16ByteSubstrings()
@@ -47,8 +42,8 @@ vector<string> Block::Get16ByteSubstrings()
     vector<string> substrings;
     for (size_t i = 0; i < textInput.size(); i += bytes)
     {
-        // cout << "textInput size: " << textInput.size() << endl;
-        // cout << textInput.substr(i, bytes) << endl;
+        cout << "textInput size: " << textInput.size() << endl;
+        cout << textInput.substr(i, bytes) << endl;
         substrings.push_back(textInput.substr(i, bytes));
     }
     return substrings;
