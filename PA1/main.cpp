@@ -2,6 +2,8 @@
 #include <iostream>
 
 #include "utility.h"
+#include "block.h"
+// #include "cipher.h"
 
 using namespace std;
 
@@ -42,10 +44,42 @@ int main(int argc, char *argv[])
 
     Utility::VerifyInputArgs(argc);
 
+    char cipher = *argv[1];
+    std::string inputFilePath = argv[2];
+    std::string outputFilePath = argv[3];
+    std::string keyFilePath = argv[4];
+    char operation = *argv[5];
+    Utility utility1 = Utility(cipher, inputFilePath, outputFilePath, keyFilePath, operation);
     Utility utility = Utility(argv);
 
     utility.RetrieveInputArgs();
 
+    // consider using a cipher parent class to simplify this logic
+
+    // if (cipher == 'B')
+    // {
+    //     Block block = new Block(utility.GetTextInput(), utility.GetKey());
+    //     if (operation == 'E')
+    //     {
+    //         // encrypt
+    //     }
+    //     else
+    //     {
+    //         // decrypt
+    //     }
+    // }
+    // if (cipher == 'S')
+    // {
+    //     Stream stream = utility.CreateStreamObject();
+    //     if (operation == 'E')
+    //     {
+    //         // encrypt
+    //     }
+    //     else
+    //     {
+    //         // decrypt
+    //     }
+    // }
     // if cipher is B
     // if operation is encrypt
     // encrypt

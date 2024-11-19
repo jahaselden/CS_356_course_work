@@ -1,3 +1,5 @@
 ./cipher B b-e-input.txt b-e-output.txt b-e-key.txt E
 ./cipher S s-d-input.txt s-d-output.txt s-d-key.txt D
 ./cipher B test_input.txt test_output.txt testkey.txt E
+
+./cipher B ../PA1_testfiles/b-e-input.txt b-e-output.txt ../PA1_testfiles/testkey.txt E

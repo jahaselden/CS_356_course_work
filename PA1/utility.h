@@ -11,8 +11,9 @@ public:
     std::string plaintextInput;
     std::string plaintextKey;
 
-    // Utility() = delete;
+    Utility() = delete;
     Utility(char *argv[]);
+    Utility(char, std::string, std::string, std::string, char);
     static void VerifyInputArgs(int argc);
     void VerifyCipherType();
     void RetrieveInputFileText();
@@ -20,6 +21,12 @@ public:
     void RetrieveKey();
     void VerifyOpMode();
     void RetrieveInputArgs();
+    void CreateStreamObject();
+    void CreateBlockObject();
+    char GetCipherType();
+    char GetOpType();
+    std::string GetTextInput();
+    std::string GetKey();
     // method for writing to output file
 };
 

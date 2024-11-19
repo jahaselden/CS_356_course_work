@@ -2,11 +2,16 @@
 #include <iostream>
 #include <fstream>
 #include "utility.h"
+#include "block.h"
+// #include "stream.h"
 
 using namespace std;
 
 Utility::Utility(char *argv[])
     : cipherType(*argv[1]), inputFilePath(argv[2]), outputFilePath(argv[3]), keyFilePath(argv[4]), operation(*argv[5]), byteIndex(0) {}
+
+Utility::Utility(char cipher, string ipf, string ofp, string ktf, char op)
+    : cipherType(cipher), inputFilePath(ipf), outputFilePath(ofp), keyFilePath(ktf), operation(op), byteIndex(0) {}
 
 void Utility::VerifyInputArgs(int argc) // static
 {
@@ -21,7 +26,6 @@ void Utility::VerifyCipherType()
 {
     if (cipherType != 'B' && cipherType != 'S')
     {
-        cout << cipherType << endl;
         cout << "Invalid Function Type" << endl;
         exit(1);
     }
@@ -99,3 +103,37 @@ void Utility::RetrieveInputArgs()
     VerifyOpMode();
 }
 
+// Block Utility::CreateBlockObject(){
+//     return new Block(utility.GetTextInput(), utility.GetKey());
+// }
+
+// Stream Utility::CreateStreamObject(){
+//     //return new Stream( )
+// }
+
+// char Utility::GetCipherType(){
+//     return this.cipherType;
+// }
+
+// char Utility::GetOpType(){
+//     return this.operation;
+// }
+
+// string Utility::GetTextInput(){
+//     return this.plaintextInput;
+// }
+
+// string Utility::GetKey(){
+//     return this.plaintextKey;
+// }
+// if cipher is B
+    // if operation is encrypt
+        // encrypt
+    // else operation is decrypt
+        // decrypt
+
+// if cipher is S
+    // if operation is encrypt
+        // encrypt
+    // else operation is decrypt
+        // decrypt

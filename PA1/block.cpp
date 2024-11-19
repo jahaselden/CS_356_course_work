@@ -11,12 +11,14 @@ Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 void Block::PadInputText()
 {
     int inputByteTotal = textInput.size();
-
+    cout << "text input before padding: " << textInput << endl;
     int padding = CheckPadding(inputByteTotal);
+    cout << "padding remainder: " << endl;
     if (padding != 0)
     {
         addPadding(padding);
     }
+    cout << "text input after padding: " << textInput << endl;
 }
 
 int Block::CheckPadding(int inputByteTotal)
