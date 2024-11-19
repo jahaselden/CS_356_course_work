@@ -54,16 +54,16 @@ int main(int argc, char *argv[])
     // consider using a cipher parent class to simplify this logic
     if (cipher == 'B')
     {
-        cout << "text input: " << utility.GetTextInput() << endl;
-        cout << "text key: " << utility.GetKey() << endl;
+        // cout << "text input: " << utility.GetTextInput() << endl;
+        // cout << "text key: " << utility.GetKey() << endl;
         Block block = Block(utility.GetTextInput(), utility.GetKey());
         if (operation == 'E')
         {
-            // encrypt
+            block.Encrypt();
         }
         else
         {
-            // decrypt
+            // block.Decrypt();
         }
     }
     // if (cipher == 'S')

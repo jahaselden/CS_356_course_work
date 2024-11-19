@@ -1,6 +1,8 @@
 #ifndef BLOCK_H_DEFINED
 #define BLOCK_H_DEFINED
 
+#include <vector>
+
 class Block
 {
 public:
@@ -13,10 +15,12 @@ public:
     Block(std::string input, std::string key);
     // these should be in block class
     void PadInputText();
-    int CheckPadding(int inputByteTotal);
-    void addPadding(int padding);
-    void XOR();
-    void Swap();
+    bool CheckPadding(int inputByteTotal);
+    void AddPadding();
+    std::vector<std::string> Get16ByteSubstrings();
+    void Encrypt();
+    std::string XOR(std::string substr);
+    std::string Swap(std::string xorString);
 };
 
 #endif
