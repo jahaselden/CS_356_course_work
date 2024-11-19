@@ -39,9 +39,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    // printing input for test
-    // cout << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << endl;
-
     Utility::VerifyInputArgs(argc);
 
     char cipher = *argv[1];
@@ -49,25 +46,26 @@ int main(int argc, char *argv[])
     std::string outputFilePath = argv[3];
     std::string keyFilePath = argv[4];
     char operation = *argv[5];
-    Utility utility1 = Utility(cipher, inputFilePath, outputFilePath, keyFilePath, operation);
-    Utility utility = Utility(argv);
+    Utility utility = Utility(cipher, inputFilePath, outputFilePath, keyFilePath, operation);
+    // Utility utility = Utility(argv);
 
     utility.RetrieveInputArgs();
 
     // consider using a cipher parent class to simplify this logic
-
-    // if (cipher == 'B')
-    // {
-    //     Block block = new Block(utility.GetTextInput(), utility.GetKey());
-    //     if (operation == 'E')
-    //     {
-    //         // encrypt
-    //     }
-    //     else
-    //     {
-    //         // decrypt
-    //     }
-    // }
+    if (cipher == 'B')
+    {
+        cout << "text input: " << utility.GetTextInput() << endl;
+        cout << "text key: " << utility.GetKey() << endl;
+        Block block = Block(utility.GetTextInput(), utility.GetKey());
+        if (operation == 'E')
+        {
+            // encrypt
+        }
+        else
+        {
+            // decrypt
+        }
+    }
     // if (cipher == 'S')
     // {
     //     Stream stream = utility.CreateStreamObject();

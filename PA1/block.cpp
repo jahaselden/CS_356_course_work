@@ -7,7 +7,6 @@ using namespace std;
 
 Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 
-// these should be in Block class
 void Block::PadInputText()
 {
     int inputByteTotal = textInput.size();
@@ -41,6 +40,7 @@ void Block::addPadding(int padding)
 
 void Block::XOR()
 {
+    PadInputText();
 }
 
 void Block::Swap()

@@ -119,13 +119,14 @@ void Utility::RetrieveInputArgs()
 //     return this.operation;
 // }
 
-// string Utility::GetTextInput(){
-//     return this.plaintextInput;
-// }
+string Utility::GetTextInput(){
+    return this->plaintextInput;
+}
 
-// string Utility::GetKey(){
-//     return this.plaintextKey;
-// }
+string Utility::GetKey(){
+    return this->plaintextKey;
+}
+
 // if cipher is B
     // if operation is encrypt
         // encrypt

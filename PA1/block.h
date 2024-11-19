@@ -1,5 +1,5 @@
-#ifndef UTILITY_H_DEFINED
-#define UTILITY_H_DEFINED
+#ifndef BLOCK_H_DEFINED
+#define BLOCK_H_DEFINED
 
 class Block
 {
@@ -9,7 +9,7 @@ public:
     std::string paddedInput;
     std::string hexInput;
 
-    //Block() = delete;
+    Block() = delete;
     Block(std::string input, std::string key);
     // these should be in block class
     void PadInputText();
