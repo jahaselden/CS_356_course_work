@@ -8,11 +8,27 @@ using namespace std;
 
 Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 
+// converting from char -> ascii -> hex?
+// cast int to char?
+void Block::Encrypt()
+{
+    cout << "text bytes before padding: " << textInput.size() << endl;
+    PadInputText();
+    cout << "text bytes after padding: " << textInput.size() << endl;
+    vector<string> substrings = Get16ByteSubstrings();
+    for (int i = 0; i < substrings.size(); i++)
+    {
+        substrings.at(i) = XOR(substrings.at(i));
+        substrings.at(i) = Swap(substrings.at(i));
+    }
+}
+
 void Block::PadInputText()
 {
     int inputByteTotal = textInput.size();
-    int padding = CheckPadding(inputByteTotal);
-    if (padding != 0)
+    bool pad = CheckPadding(inputByteTotal);
+    cout << "pad check: " << pad << endl;
+    if (!pad)
     {
         AddPadding();
     }
@@ -41,19 +57,6 @@ vector<string> Block::Get16ByteSubstrings()
         substrings.push_back(textInput.substr(i, bytes));
     }
     return substrings;
-}
-
-// converting from char -> ascii -> hex?
-// cast int to char?
-void Block::Encrypt()
-{
-    PadInputText();
-    vector<string> substrings = Get16ByteSubstrings();
-    for (int i = 0; i < substrings.size(); i++)
-    {
-        substrings.at(i) = XOR(substrings.at(i));
-        substrings.at(i) = Swap(substrings.at(i));
-    }
 }
 
 string Block::XOR(string substr)

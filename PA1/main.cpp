@@ -39,7 +39,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    Utility::VerifyInputArgs(argc);
+    Utility::VerifyNumInputArgs(argc);
 
     char cipher = *argv[1];
     std::string inputFilePath = argv[2];
@@ -49,13 +49,13 @@ int main(int argc, char *argv[])
     Utility utility = Utility(cipher, inputFilePath, outputFilePath, keyFilePath, operation);
     // Utility utility = Utility(argv);
 
-    utility.RetrieveInputArgs();
+    utility.RetrieveAndValidateInputArgs();
 
     // consider using a cipher parent class to simplify this logic
     if (cipher == 'B')
     {
-        // cout << "text input: " << utility.GetTextInput() << endl;
-        // cout << "text key: " << utility.GetKey() << endl;
+        cout << "text input: " << utility.GetTextInput() << endl;
+        cout << "text key: " << utility.GetKey() << endl;
         Block block = Block(utility.GetTextInput(), utility.GetKey());
         if (operation == 'E')
         {

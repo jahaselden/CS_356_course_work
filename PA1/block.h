@@ -16,7 +16,8 @@ public:
     // these should be in block class
     void PadInputText();
     bool CheckPadding(int inputByteTotal);
-    std::string AddPadding();
+    // std::string AddPadding();
+    void AddPadding();
     std::vector<std::string> Get16ByteSubstrings();
     void Encrypt();
     std::string XOR(std::string substr);

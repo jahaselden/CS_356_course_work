@@ -3,6 +3,7 @@
 #include <fstream>
 #include "utility.h"
 #include "block.h"
+#include <filesystem>
 // #include "stream.h"
 
 using namespace std;
@@ -13,7 +14,7 @@ Utility::Utility(char *argv[])
 Utility::Utility(char cipher, string ipf, string ofp, string ktf, char op)
     : cipherType(cipher), inputFilePath(ipf), outputFilePath(ofp), keyFilePath(ktf), operation(op), byteIndex(0) {}
 
-void Utility::VerifyInputArgs(int argc) // static
+void Utility::VerifyNumInputArgs(int argc) // static
 {
     if (argc != 6)
     {
@@ -94,35 +95,42 @@ void Utility::VerifyOpMode()
     }
 }
 
-void Utility::RetrieveInputArgs()
+bool Utility::CheckIfFileEmpty(string file)
+{
+    cout << "check file called" << endl;
+    ifstream inFile = ifstream(file);
+    // string line;
+    return inFile.peek() == std::ifstream::traits_type::eof();
+}
+
+void Utility::WriteToOutputFile(string file, string txt)
+{
+    ofstream outfile(file, ios::app);
+    cout << "txt: " << txt << endl;
+    outfile << txt;
+    outfile.close();
+}
+
+void Utility::RetrieveAndValidateInputArgs()
 {
     VerifyCipherType();
     RetrieveInputFileText();
     CreateOutputFile();
+    // if (CheckIfFileEmpty(inputFilePath))
+    // {
+    //     WriteToOutputFile(outputFilePath, "test");
+    //     exit(1);
+    // }
     RetrieveKey();
     VerifyOpMode();
 }
 
-// Block Utility::CreateBlockObject(){
-//     return new Block(utility.GetTextInput(), utility.GetKey());
-// }
-
-// Stream Utility::CreateStreamObject(){
-//     //return new Stream( )
-// }
-
-// char Utility::GetCipherType(){
-//     return this.cipherType;
-// }
-
-// char Utility::GetOpType(){
-//     return this.operation;
-// }
-
-string Utility::GetTextInput(){
+string Utility::GetTextInput()
+{
     return this->plaintextInput;
 }
 
-string Utility::GetKey(){
+string Utility::GetKey()
+{
     return this->plaintextKey;
 }
