@@ -19,7 +19,8 @@ public:
     // std::string AddPadding();
     void AddPadding();
     std::vector<std::string> Get16ByteSubstrings();
-    void Encrypt();
+    std::string Encrypt();
+    std::string Decrypt();
     std::string XOR(std::string substr);
     std::string Swap(std::string xorString);
 };

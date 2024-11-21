@@ -37,10 +37,11 @@ using namespace std;
 // for each byte of input substring (starting from left side - 0)
 // XOR input index with correlated keyFilePath index
 
+
 int main(int argc, char *argv[])
 {
     Utility::VerifyNumInputArgs(argc);
-
+    string cipherText;
     char cipher = *argv[1];
     std::string inputFilePath = argv[2];
     std::string outputFilePath = argv[3];
@@ -50,38 +51,5 @@ int main(int argc, char *argv[])
     // Utility utility = Utility(argv);
 
     utility.RetrieveAndValidateInputArgs();
-
-    // consider using a cipher parent class to simplify this logic
-    if (cipher == 'B')
-    {
-        cout << "text input: " << utility.GetTextInput() << endl;
-        cout << "text key: " << utility.GetKey() << endl;
-        Block block = Block(utility.GetTextInput(), utility.GetKey());
-        if (operation == 'E')
-        {
-            block.Encrypt();
-        }
-        else
-        {
-            // block.Decrypt();
-        }
-    }
-    // if (cipher == 'S')
-    // {
-    //     Stream stream = utility.CreateStreamObject();
-    //     if (operation == 'E')
-    //     {
-    //         // encrypt
-    //     }
-    //     else
-    //     {
-    //         // decrypt
-    //     }
-    // }
-
-    // if cipher is S
-    // if operation is encrypt
-    // encrypt
-    // else operation is decrypt
-    // decrypt
+    utility.Run();
 }

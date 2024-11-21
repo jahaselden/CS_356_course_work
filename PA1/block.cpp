@@ -8,26 +8,31 @@ using namespace std;
 
 Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 
-// converting from char -> ascii -> hex?
-// cast int to char?
-void Block::Encrypt()
+string Block::Encrypt()
 {
-    cout << "text bytes before padding: " << textInput.size() << endl;
+    // cout << "text bytes before padding: " << textInput.size() << endl;
     PadInputText();
-    cout << "text bytes after padding: " << textInput.size() << endl;
+    // cout << "text bytes after padding: " << textInput.size() << endl;
+    // cout << "text input before encryption: " << textInput << endl;
     vector<string> substrings = Get16ByteSubstrings();
     for (int i = 0; i < substrings.size(); i++)
     {
+        // cout << "substring[" << i << "]: " << substrings.at(i) << endl;
         substrings.at(i) = XOR(substrings.at(i));
         substrings.at(i) = Swap(substrings.at(i));
+        // cout << "substring[" << i << "] after encryption: " << dec << substrings.at(i) << endl;
     }
+    string encryptedCipher;
+    for (string substr : substrings){
+        encryptedCipher.append(substr);
+    }
+    return encryptedCipher;
 }
 
 void Block::PadInputText()
 {
     int inputByteTotal = textInput.size();
     bool pad = CheckPadding(inputByteTotal);
-    cout << "pad check: " << pad << endl;
     if (!pad)
     {
         AddPadding();
@@ -64,7 +69,8 @@ string Block::XOR(string substr)
     string xorOutput = substr;
     for (int i = 0; i < 16; ++i)
     {
-        xorOutput.at(i) = key.at(i) ^ substr.at(i);
+        char xorChar = key.at(i) ^ substr.at(i);
+        xorOutput.at(i) = xorChar;
     }
     return xorOutput;
 }
@@ -91,4 +97,18 @@ string Block::Swap(string xorString)
         }
     }
     return outputSwap;
+}
+
+string Block::Decrypt()
+{
+    vector<string> substrings = Get16ByteSubstrings();
+    for (int i = 0; i < substrings.size(); i++)
+    {
+        // cout << "substring[" << i << "]: " << substrings.at(i) << endl;
+        substrings.at(i) = Swap(substrings.at(i));
+        substrings.at(i) = XOR(substrings.at(i));
+        // cout << "substring[" << i << "] after decryption: " << dec << substrings.at(i) << endl;
+        // cout << hex << substrings.at(i);
+    }
+    return substrings.at(0);
 }

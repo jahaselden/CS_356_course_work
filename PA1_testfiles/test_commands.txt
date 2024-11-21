@@ -3,3 +3,7 @@
 ./cipher B test_input.txt test_output.txt testkey.txt E
 
 ./cipher B ../PA1_testfiles/b-e-input.txt b-e-output.txt ../PA1_testfiles/testkey.txt E
+
+./cipher B ../PA1_testfiles/bc-input-tc-1.txt b-e-output.txt ../PA1_testfiles/bc-key-tc-1.txt E
+
+./cipher B ../PA1_testfiles/lu.txt b-e-output.txt ../PA1_testfiles/bc-key-tc-1.txt E

@@ -3,8 +3,6 @@
 #include <fstream>
 #include "utility.h"
 #include "block.h"
-#include <filesystem>
-// #include "stream.h"
 
 using namespace std;
 
@@ -54,19 +52,6 @@ void Utility::RetrieveInputFileText()
     inputFile.close();
 }
 
-void Utility::CreateOutputFile()
-{
-    fstream file;
-    file.open(outputFilePath, ios::out);
-
-    if (!file)
-    {
-        cout << "Error in Creating File" << endl;
-    }
-
-    file.close();
-}
-
 void Utility::RetrieveKey()
 {
     // if key file does not exist
@@ -95,17 +80,10 @@ void Utility::VerifyOpMode()
     }
 }
 
-bool Utility::CheckIfFileEmpty(string file)
+void Utility::WriteToOutputFile(string txt)
 {
-    cout << "check file called" << endl;
-    ifstream inFile = ifstream(file);
-    // string line;
-    return inFile.peek() == std::ifstream::traits_type::eof();
-}
+    ofstream outfile(outputFilePath);
 
-void Utility::WriteToOutputFile(string file, string txt)
-{
-    ofstream outfile(file, ios::app);
     cout << "txt: " << txt << endl;
     outfile << txt;
     outfile.close();
@@ -115,14 +93,51 @@ void Utility::RetrieveAndValidateInputArgs()
 {
     VerifyCipherType();
     RetrieveInputFileText();
-    CreateOutputFile();
-    // if (CheckIfFileEmpty(inputFilePath))
-    // {
-    //     WriteToOutputFile(outputFilePath, "test");
-    //     exit(1);
-    // }
     RetrieveKey();
     VerifyOpMode();
+}
+
+void Utility::Run()
+{
+    if (cipherType == 'B')
+    {
+        RunBlockCipher();
+    }
+    if (cipherType == 'S')
+    {
+        RunStreamCipher();
+    }
+}
+
+void Utility::RunBlockCipher()
+{
+    string cipherText;
+    Block block = Block(GetTextInput(), GetKey());
+    if (operation == 'E')
+    {
+        cipherText = block.Encrypt();
+        WriteToOutputFile(cipherText);
+    }
+    else
+    {
+        cipherText = block.Decrypt();
+    }
+}
+
+void Utility::RunStreamCipher()
+{
+    // string cipherText;
+    // Stream stream = Stream(GetTextInput(), GetKey());
+    // if (operation == 'E')
+    // {
+    //     cipherText = stream.Encrypt();
+    //     WriteToOutputFile(cipherText);
+    // }
+    // else
+    // {
+    //     cipherText = stream.Decrypt();
+
+    // }
 }
 
 string Utility::GetTextInput()

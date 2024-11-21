@@ -17,16 +17,13 @@ public:
     static void VerifyNumInputArgs(int argc);
     void VerifyCipherType();
     void RetrieveInputFileText();
-    void CreateOutputFile();
     void RetrieveKey();
     void VerifyOpMode();
     void RetrieveAndValidateInputArgs();
-    void CreateStreamObject();
-    void CreateBlockObject();
-    bool CheckIfFileEmpty(std::string);
-    char GetCipherType();
-    char GetOpType();
-    void WriteToOutputFile(std::string, std::string);
+    void Run();
+    void RunBlockCipher();
+    void RunStreamCipher();
+    void WriteToOutputFile(std::string);
     std::string GetTextInput();
     std::string GetKey();
     // method for writing to output file
