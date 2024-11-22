@@ -84,7 +84,7 @@ void Utility::WriteToOutputFile(string txt)
 {
     ofstream outfile(outputFilePath);
 
-    cout << "txt: " << txt << endl;
+    // cout << "txt: " << txt << endl;
     outfile << txt;
     outfile.close();
 }
@@ -121,6 +121,8 @@ void Utility::RunBlockCipher()
     else
     {
         cipherText = block.Decrypt();
+        WriteToOutputFile(cipherText);
+        // cout << "decrypted text: " << cipherText << endl;
     }
 }
 

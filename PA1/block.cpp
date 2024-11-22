@@ -17,13 +17,15 @@ string Block::Encrypt()
     vector<string> substrings = Get16ByteSubstrings();
     for (int i = 0; i < substrings.size(); i++)
     {
-        // cout << "substring[" << i << "]: " << substrings.at(i) << endl;
+        // cout << "substring[" << i << "] before encrypt: " << substrings.at(i) << endl;
         substrings.at(i) = XOR(substrings.at(i));
+        // cout << "substring[" << i << "] after xor: " << substrings.at(i) << endl;
         substrings.at(i) = Swap(substrings.at(i));
-        // cout << "substring[" << i << "] after encryption: " << dec << substrings.at(i) << endl;
+        // cout << "substring[" << i << "] after swap: " << substrings.at(i) << endl;
     }
     string encryptedCipher;
-    for (string substr : substrings){
+    for (string substr : substrings)
+    {
         encryptedCipher.append(substr);
     }
     return encryptedCipher;
@@ -70,7 +72,7 @@ string Block::XOR(string substr)
     for (int i = 0; i < 16; ++i)
     {
         char xorChar = key.at(i) ^ substr.at(i);
-        xorOutput.at(i) = xorChar;
+        xorOutput.at(i) = xorChar; // could be one line?
     }
     return xorOutput;
 }
@@ -83,7 +85,7 @@ string Block::Swap(string xorString)
 
     while (start < end)
     {
-        if (outputSwap.at(start) % 2 == 1)
+        if (key.at(start) % 2 == 1)
         {
             char temp = outputSwap.at(start);
             outputSwap.at(start) = outputSwap.at(end);
@@ -104,11 +106,23 @@ string Block::Decrypt()
     vector<string> substrings = Get16ByteSubstrings();
     for (int i = 0; i < substrings.size(); i++)
     {
-        // cout << "substring[" << i << "]: " << substrings.at(i) << endl;
+        // cout << "substring[" << i << "] before swap: " << substrings.at(i) << endl;
         substrings.at(i) = Swap(substrings.at(i));
+        // cout << "substring[" << i << "] before swap: " << substrings.at(i) << endl;
         substrings.at(i) = XOR(substrings.at(i));
-        // cout << "substring[" << i << "] after decryption: " << dec << substrings.at(i) << endl;
-        // cout << hex << substrings.at(i);
     }
-    return substrings.at(0);
+
+    // remove padding
+    char pad = 0x81;
+    string paddedSubstr = substrings.at(substrings.size() - 1);
+    int unpad_index = paddedSubstr.find(pad);
+    substrings.at(substrings.size() - 1) = paddedSubstr.substr(0, unpad_index);
+
+    cout << substrings.at(substrings.size() - 1) << endl;
+    string decryptedCipher;
+    for (string substr : substrings)
+    {
+        decryptedCipher.append(substr);
+    }
+    return decryptedCipher;
 }
