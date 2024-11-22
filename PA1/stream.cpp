@@ -19,18 +19,16 @@ string Stream::Decrypt()
 string Stream::XOR()
 {
     string xorCipher = textInput;
-    // cout << "text before cipher: " << xorCipher << endl;
+    int max = textInput.size();
     int index = 0;
-    while (index < textInput.size())
-    { 
+    while (index < max)
+    {
         for (int i = 0; i < key.size(); ++i)
         {
             char xorChar = key.at(i) ^ textInput.at(index);
             xorCipher.at(index) = xorChar;
-            // cout << "cipher text in progress: " << xorCipher << endl;
             ++index;
         }
     }
-    // cout << "final cipher: " << xorCipher << endl;
     return xorCipher;
 }

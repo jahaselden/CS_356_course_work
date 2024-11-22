@@ -136,7 +136,6 @@ void Utility::RunStreamCipher()
         cipherText = stream.Decrypt();
 
     }
-    // cout << "return string from stream: " << cipherText << endl;
     WriteToOutputFile(cipherText);
 }
 

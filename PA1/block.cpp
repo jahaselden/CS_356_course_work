@@ -10,18 +10,12 @@ Block::Block(string textInput, string key) : textInput(textInput), key(key) {}
 
 string Block::Encrypt()
 {
-    // cout << "text bytes before padding: " << textInput.size() << endl;
     PadInputText();
-    // cout << "text bytes after padding: " << textInput.size() << endl;
-    // cout << "text input before encryption: " << textInput << endl;
     vector<string> substrings = Get16ByteSubstrings();
     for (int i = 0; i < substrings.size(); i++)
     {
-        // cout << "substring[" << i << "] before encrypt: " << substrings.at(i) << endl;
         substrings.at(i) = XOR(substrings.at(i));
-        // cout << "substring[" << i << "] after xor: " << substrings.at(i) << endl;
         substrings.at(i) = Swap(substrings.at(i));
-        // cout << "substring[" << i << "] after swap: " << substrings.at(i) << endl;
     }
     string encryptedCipher;
     for (string substr : substrings)
@@ -106,9 +100,7 @@ string Block::Decrypt()
     vector<string> substrings = Get16ByteSubstrings();
     for (int i = 0; i < substrings.size(); i++)
     {
-        // cout << "substring[" << i << "] before swap: " << substrings.at(i) << endl;
         substrings.at(i) = Swap(substrings.at(i));
-        // cout << "substring[" << i << "] before swap: " << substrings.at(i) << endl;
         substrings.at(i) = XOR(substrings.at(i));
     }
 
