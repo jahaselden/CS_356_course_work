@@ -8,3 +8,7 @@
 ./cipher B ../PA1_testfiles/bc-input-tc-1.txt b-d-output.txt ../PA1_testfiles/bc-key-tc-1.txt D
 
 ./cipher B ../PA1_testfiles/lu.txt b-e-output.txt ../PA1_testfiles/bc-key-tc-1.txt E
+
+
+./cipher S ../PA1_testfiles/sc-input-tc-1.txt s-e-output.txt ../PA1_testfiles/sc-key-tc-1.txt E
+./cipher S ../PA1_testfiles/sc-input-tc-1.txt s-d-output.txt ../PA1_testfiles/sc-key-tc-1.txt D
