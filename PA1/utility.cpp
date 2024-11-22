@@ -3,6 +3,7 @@
 #include <fstream>
 #include "utility.h"
 #include "block.h"
+#include "stream.h"
 
 using namespace std;
 
@@ -83,8 +84,6 @@ void Utility::VerifyOpMode()
 void Utility::WriteToOutputFile(string txt)
 {
     ofstream outfile(outputFilePath);
-
-    // cout << "txt: " << txt << endl;
     outfile << txt;
     outfile.close();
 }
@@ -116,30 +115,28 @@ void Utility::RunBlockCipher()
     if (operation == 'E')
     {
         cipherText = block.Encrypt();
-        WriteToOutputFile(cipherText);
     }
     else
     {
         cipherText = block.Decrypt();
-        WriteToOutputFile(cipherText);
-        // cout << "decrypted text: " << cipherText << endl;
     }
+    WriteToOutputFile(cipherText);
 }
 
 void Utility::RunStreamCipher()
 {
-    // string cipherText;
-    // Stream stream = Stream(GetTextInput(), GetKey());
-    // if (operation == 'E')
-    // {
-    //     cipherText = stream.Encrypt();
-    //     WriteToOutputFile(cipherText);
-    // }
-    // else
-    // {
-    //     cipherText = stream.Decrypt();
+    string cipherText;
+    Stream stream = Stream(GetTextInput(), GetKey());
+    if (operation == 'E')
+    {
+        cipherText = stream.Encrypt();
+    }
+    else
+    {
+        cipherText = stream.Decrypt();
 
-    // }
+    }
+    WriteToOutputFile(cipherText);
 }
 
 string Utility::GetTextInput()
